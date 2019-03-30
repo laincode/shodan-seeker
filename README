@@ -1,0 +1,124 @@
+Shodan-Seeker
+-------------
+
+Command-line tool using Shodan API. Generates and downloads CSV results, diffing of historic scanning results, alerts and monitoring of specific ports/IPs, etc.
+
+
+Dependences
+-----------
+
+python2.7
+Shodan python library: $ pip install shodan
+
+Set your API Key, paths and smtp info in configuration file: config.py
+
+
+Usage
+-----
+
+./shodanseeker
+Usage: python shodanseeker [options]
+
+Options:
+  -h, --help            show this help message and exit
+  --mail=MAIL           Send email with results and alerts
+  -a                    Attach csv results to an email
+
+  Scanning Options:
+    --si=SCANINPUT      Scan an IP/netblock
+    --sf=SCANFILE       Scan an IP/netblock from file
+    --force             Force Shodan to re-scan the provided IPs
+    -l                  List previously submitted scans
+
+  Searching Options:
+    -i GETINFO          Get all information of an IP/netblock
+    -f GETINFOFROMFILE  Get all information of an IP/netblock from file
+    --history           Return all Historical Banners
+    --diff              Detect New Services Published
+    --output=OUTPUT     Output results in csv format
+
+  Monitoring in Real-Time:
+    --ca=ADDALERT       Create network alerts for the IP/netblock
+    --cf=ADDALERTFILE   Create network alerts from file
+    --la                List of all the network alerts activated
+    --da=DELALERT       Remove the specified network alert
+    --subs=SUBSALERTS   Subscribe to the Private Horse Streaming
+    --monport=MONPORT   Monitoring for High Risk Services
+    --mondiff           Monitoring for New Services Published
+    --montag=MONTAG     Tags (ex: compromised, doublepulsar, self-signed)
+    --get=GET           Protocols, services, ports and tags supported
+
+
+Examples
+--------
+
+Scan IPs/netblocks:
+
+  ./shodanseeker --si 'X.X.X.X X.X.X.X/24'
+
+Scan IPs/netblocks from a file:
+
+  ./shodanseeker --sf 'pathfilename'
+
+List previously submitted scans:
+
+  ./shodanseeker -l
+
+Get all information of IP/netblocks:
+
+  ./shodanseeker -i 'X.X.X.X Y.Y.Y.Y/24 Z.Z.Z.Z'
+
+Get all information from a file of IPs/netblocks:
+
+  ./shodanseeker -f 'pathfilename' 
+  
+Get all historical banners:
+
+  ./shodanseeker -i 'X.X.X.X' --history    
+
+Detect new services:
+
+  ./shodanseeker -i 'X.X.X.X' --diff
+
+Output results in csv format:
+
+  ./shodanseeker -f 'pathfilename' [--history|--diff] --output csv       
+
+Send email with csv results attached:
+
+  ./shodanseeker -i 'X.X.X.X' --diff --output csv --mail toaddr -a       
+
+Create network alerts for the IP/netblock:
+
+  ./shodanseeker --ca Name 'X.X.X.X Y.Y.Y.Y/24'                          
+
+Create network alerts from file:
+
+  ./shodanseeker --cf Name 'pathfilename'
+
+List of all the network alerts activated on the account:
+
+  ./shodanseeker --la         
+
+Remove the specified network alert:
+
+  ./shodanseeker --da [alertid|all]  
+
+Subscribe to the Streaming and monitoring for high risk services:
+
+  ./shodanseeker --subs [alertid|all] --monport '3389 22' [--mail toaddr]  
+  
+Subscribe to the Streaming and monitoring for new services published:
+
+  ./shodanseeker --subs [alertid|all] --mondiff [--mail toaddr]
+  
+Subscribe to the Streaming and monitoring for tags (ex: compromised, doublepulsar, self-signed):
+
+  ./shodanseeker --subs [alertid|all] --montag 'compromised' [--mail toaddr]
+
+List of (protocols,services,ports,tags) supported:
+
+  ./shodanseeker --get [protocols|services|ports|tags]  
+
+
+  
