@@ -47,7 +47,7 @@ class ShodanSeeker:
         if os.path.isfile(filelogpath):
             file = open(filelogpath, "a")
             file.write(msg + '\n')
-	    file.close()
+            file.close()
         else:
             file = open(filelogpath, "w")
             file.write(msg + '\n')
