@@ -8,7 +8,7 @@ Dependences
 -----------
 
 python2.7
-Install requieremens: $pip install -r requirements.txt
+Install requirements: $pip install -r requirements.txt
 
 Set your API Key, paths and smtp info in configuration file: config.py
 
