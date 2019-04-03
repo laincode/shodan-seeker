@@ -8,7 +8,7 @@ Dependences
 -----------
 
 python2.7
-Shodan python library: $ pip install shodan
+Install requieremens: $pip install -r requirements.txt
 
 Set your API Key, paths and smtp info in configuration file: config.py
 
