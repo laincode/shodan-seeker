@@ -1,0 +1,4 @@
+requests
+shodan
+click
+ipcalc
