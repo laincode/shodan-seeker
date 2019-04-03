@@ -76,7 +76,7 @@ Get all historical banners:
 
   ./shodanseeker -i 'X.X.X.X' --history    
 
-Detect new services:
+Detect new services published:
 
   ./shodanseeker -i 'X.X.X.X' --diff
 
