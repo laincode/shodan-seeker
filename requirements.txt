@@ -2,3 +2,4 @@ requests
 shodan
 click
 ipcalc
+six
